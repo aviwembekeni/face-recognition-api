@@ -38,7 +38,7 @@ app.post('/signin', (req, res) => {
          req.body.password === database.users[0].password) {
 
         res.json(database.users[0]);
-        
+
     }else{
         res.status(400).json('error logging in');
     }
@@ -57,7 +57,7 @@ app.post('/register', (req, res) => {
     })
 
     res.json(database.users[database.users.length -1 ]);
-    
+
 })
 
 app.get('/profile/:id', (req, res) => {
@@ -70,17 +70,17 @@ app.get('/profile/:id', (req, res) => {
         if (user.id == id) {
         exist = true;
         return res.json(user);
-            
+
         }
     })
 
     if (!exist) {
         res.status(404).json('non such user');
      }
-    
+
 })
 
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
 
     const {id} = req.body;
 
@@ -91,7 +91,7 @@ app.post('/image', (req, res) => {
         exist = true;
         user.entries ++;
         return res.json(user.entries);
-            
+
         }
     })
 
@@ -103,5 +103,5 @@ app.post('/image', (req, res) => {
 
 app.listen(3001, ()=>{
     console.log("running");
-    
+
 });
